@@ -1,0 +1,6 @@
+# Личные рабочие файлы, не для публичного репозитория
+CLAUDE.md
+vault/
+design-handoff/
+*.zip
+node_modules/
