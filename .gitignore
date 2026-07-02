@@ -4,3 +4,6 @@ vault/
 design-handoff/
 *.zip
 node_modules/
+
+.vercel
+.env*
