@@ -606,6 +606,11 @@ h2 {
   gap: 22px;
   align-items: stretch;
 }
+.tariffs-single {
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+.tariffs-single .tariff-card { max-width: 460px; width: 100%; }
 .tariff-card {
   display: flex; flex-direction: column;
   padding: clamp(28px, 3vw, 38px);
