@@ -116,6 +116,19 @@ a { color: inherit; }
 .nav-link-label { transition: color 0.2s ease; }
 .nav-link:hover .nav-link-label { color: var(--text-primary); }
 
+/* "Услуги" ведёт на отдельную страницу, а не якорем на этой же — выделяем акцентной "таблеткой",
+   чтобы сразу было видно: это не то же самое, что остальные пункты меню */
+.nav-link-highlight {
+  padding: 7px 14px;
+  background: var(--accent-soft);
+  border: 1px solid var(--border-accent);
+  border-radius: 100px;
+}
+.nav-link-highlight .nav-link-label { color: #FF6B6B; font-weight: 600; }
+.nav-link-highlight:hover { background: rgba(227,28,28,0.2); border-color: var(--accent); }
+.nav-link-highlight:hover .nav-link-label { color: var(--text-primary); }
+.nav-link-highlight .nav-link-popup { margin-top: 4px; }
+
 .nav-link-popup {
   position: absolute;
   top: 100%;
