@@ -468,6 +468,28 @@ h2 {
   font-size: 16px; font-weight: 600;
 }
 
+/* ---------- Services ---------- */
+.services { border-top: 1px solid var(--border-subtle); }
+.services .wrap { padding-top: clamp(72px, 10vw, 130px); padding-bottom: clamp(72px, 10vw, 130px); }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+.service-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 26px;
+  background: var(--bg-card-dark);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  transition: border-color 0.2s ease;
+}
+.service-card:hover { border-color: var(--border-accent); }
+.service-title { font-size: 17px; font-weight: 600; color: var(--text-primary); }
+.service-text { font-size: 14.5px; line-height: 1.55; color: var(--text-muted); }
+
 /* ---------- Consult ---------- */
 .consult { position: relative; border-top: 1px solid var(--border-subtle); overflow: hidden; }
 .consult-glow {
