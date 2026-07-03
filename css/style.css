@@ -101,8 +101,56 @@ a { color: inherit; }
   font-weight: 500;
   color: var(--text-secondary);
 }
-.main-nav a { text-decoration: none; color: inherit; transition: color 0.2s ease; }
-.main-nav a:hover { color: var(--text-primary); }
+
+/* ---------- Nav links — same hover-reveal effect as social links, popup opens downward ---------- */
+.nav-link {
+  position: relative;
+  z-index: 5;
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  transition: opacity 0.2s ease;
+}
+.main-nav:hover .nav-link:not(:hover) { opacity: 0.5; }
+.nav-link-label { transition: color 0.2s ease; }
+.nav-link:hover .nav-link-label { color: var(--text-primary); }
+
+.nav-link-popup {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(21,21,21,0.95);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.5);
+  opacity: 0;
+  filter: blur(4px);
+  pointer-events: none;
+  transform: translate(-50%, -10px) rotate(0deg) scale(0.85);
+  transition: opacity 0.2s ease, transform 0.2s ease, filter 0.2s ease;
+}
+.nav-link:nth-child(1) .nav-link-popup { --rot: -8deg; }
+.nav-link:nth-child(2) .nav-link-popup { --rot: 6deg; }
+.nav-link:nth-child(3) .nav-link-popup { --rot: -6deg; }
+.nav-link:nth-child(4) .nav-link-popup { --rot: 8deg; }
+.nav-link:nth-child(5) .nav-link-popup { --rot: -5deg; }
+.nav-link:hover .nav-link-popup {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate(-50%, 6px) rotate(var(--rot, 0deg)) scale(1);
+}
+.nav-link-popup-inner { display: flex; transition: transform 0.2s ease; }
+.nav-link-popup.is-bouncing .nav-link-popup-inner { animation: socialBounce 0.3s ease; }
+@media (prefers-reduced-motion: reduce) {
+  .nav-link-popup { transition: none; }
+  .nav-link-popup.is-bouncing .nav-link-popup-inner { animation: none; }
+}
 
 /* ---------- Reveal animation ---------- */
 [data-reveal] {

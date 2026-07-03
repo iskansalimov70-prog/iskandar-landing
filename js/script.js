@@ -78,11 +78,11 @@
   });
 })();
 
-// Social links — click bounce (hover reveal is pure CSS)
+// Social + nav links — click bounce (hover reveal is pure CSS)
 (function () {
-  document.querySelectorAll('.social-link').forEach(function (link) {
+  document.querySelectorAll('.social-link, .nav-link').forEach(function (link) {
     link.addEventListener('click', function () {
-      var popup = link.querySelector('.social-link-popup');
+      var popup = link.querySelector('.social-link-popup, .nav-link-popup');
       if (!popup) return;
       popup.classList.remove('is-bouncing');
       void popup.offsetWidth; // restart animation
