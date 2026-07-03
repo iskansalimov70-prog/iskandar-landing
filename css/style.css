@@ -778,10 +778,13 @@ h2 {
   backdrop-filter: blur(12px);
 }
 .mobile-cta .btn { display: block; width: 100%; padding: 15px; font-size: 16px; }
+.mobile-cta-split { gap: 10px; }
+.mobile-cta-split .btn { flex: 1; padding: 14px 10px; font-size: 14.5px; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
   .main-nav { display: none; }
   .mobile-cta { display: block; }
+  .mobile-cta-split { display: flex; }
   body { padding-bottom: 76px; }
 }
