@@ -43,6 +43,7 @@ a { color: inherit; }
 
 /* ---------- Buttons ---------- */
 .btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -53,6 +54,29 @@ a { color: inherit; }
   transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
   cursor: pointer;
   border: 1px solid transparent;
+}
+/* "включение света" на hover — тот же приём размытия/прозрачности, что и в hover-иконках соцсетей/меню */
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: -40%;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(circle, rgba(255,255,255,0.45) 0%, transparent 65%);
+  opacity: 0;
+  filter: blur(12px);
+  transition: opacity 0.3s ease, filter 0.3s ease;
+  pointer-events: none;
+}
+.btn-outline::before {
+  background: radial-gradient(circle, rgba(227,28,28,0.55) 0%, transparent 65%);
+}
+.btn:hover::before {
+  opacity: 1;
+  filter: blur(4px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn::before { transition: none; }
 }
 .btn-primary {
   background: var(--accent);
