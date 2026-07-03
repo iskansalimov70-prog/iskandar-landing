@@ -90,3 +90,13 @@
     });
   });
 })();
+
+// WhatsApp order buttons — append a pre-filled message with the service name
+(function () {
+  document.querySelectorAll('[data-wa-service]').forEach(function (link) {
+    var service = link.getAttribute('data-wa-service');
+    var text = 'Здравствуйте! Хочу заказать: ' + service + '.';
+    var base = link.getAttribute('href');
+    link.setAttribute('href', base + '?text=' + encodeURIComponent(text));
+  });
+})();
