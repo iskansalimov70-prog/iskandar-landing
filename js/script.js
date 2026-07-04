@@ -100,3 +100,39 @@
     link.setAttribute('href', base + '?text=' + encodeURIComponent(text));
   });
 })();
+
+// Language switch (RU / TJ)
+(function () {
+  var STORAGE_KEY = 'site-lang';
+  var els = document.querySelectorAll('[data-tj]');
+  if (!els.length) return;
+
+  els.forEach(function (el) {
+    el.setAttribute('data-ru', el.innerHTML);
+  });
+
+  var applyLang = function (lang) {
+    els.forEach(function (el) {
+      el.innerHTML = lang === 'tj' ? el.getAttribute('data-tj') : el.getAttribute('data-ru');
+    });
+    document.documentElement.setAttribute('lang', lang === 'tj' ? 'tg' : 'ru');
+    document.querySelectorAll('[data-lang-btn]').forEach(function (btn) {
+      btn.classList.toggle('is-active', btn.getAttribute('data-lang-btn') === lang);
+    });
+    // Re-measure any open accordion body so translated text isn't clipped
+    document.querySelectorAll('.acc-toggle[aria-expanded="true"]').forEach(function (toggle) {
+      var body = toggle.parentElement.querySelector('.acc-body');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    });
+    localStorage.setItem(STORAGE_KEY, lang);
+  };
+
+  document.querySelectorAll('[data-lang-btn]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      applyLang(btn.getAttribute('data-lang-btn'));
+    });
+  });
+
+  var saved = localStorage.getItem(STORAGE_KEY);
+  if (saved === 'tj') applyLang('tj');
+})();
